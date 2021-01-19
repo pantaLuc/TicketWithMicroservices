@@ -15,7 +15,7 @@ spec:
       containers:
       - name: auth
         image: panta19l/auth
-----
+---
 apiVersion: v1
 kind: Service
 metadata:
@@ -23,10 +23,10 @@ metadata:
 spec:
   selector:
     app: auth
-  port:
+  ports:
     - name: auth
       protocol: TCP
-      port: 3000
-      targetPort: 3000
+      port: 4000
+      targetPort: 4000
 
 
