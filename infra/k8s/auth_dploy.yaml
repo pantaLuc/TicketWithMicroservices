@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth-dpl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: auth
+  template:
+    metadata:
+      labels:
+        app: auth
+    spec:
+      containers:
+      - name: auth
+        image: panta19l/auth
+----
+apiVersion: v1
+kind: Service
+metadata:
+  name: auth-serv
+spec:
+  selector:
+    app: auth
+  port:
+    - name: auth
+      protocol: TCP
+      port: 3000
+      targetPort: 3000
+
+
