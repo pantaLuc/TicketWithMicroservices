@@ -38,3 +38,5 @@ const start=async ()=>{
 };
 
 start();
+
+app.use(errorHandler)

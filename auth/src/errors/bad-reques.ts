@@ -9,6 +9,6 @@ export class BadRequesError extends CustomError{
        Object.setPrototypeOf(this,BadRequesError.prototype)
     }
     serializeErrors(){
-        return[]
+        return[{message:this.message}]
     }
 }

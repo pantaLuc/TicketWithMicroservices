@@ -3,7 +3,7 @@ import {User} from '../models/user';
 import {body,validationResult} from 'express-validator'
 import {RequestValidationError} from '../errors/req-validation-error';
 import 'express-async-errors'
-import { BadRequesError } from '../errors/bad-request-error';
+import { BadRequesError } from '../errors/bad-reques';
 
 const router=express.Router()
 
@@ -30,12 +30,11 @@ router.post('/api/users/signup',[
    throw new BadRequesError('email in use');
   }
   //create a new user
-  const user=User.build({email:req.body.email ,password:req.body.password})
-  console.log(req.body)
+  const user=User.build({email ,password})
   //save the user to the data base
   await user.save();
   // saying a user is created
-
+  console.log(email)
   res.status(201).send(user);
 
   });
