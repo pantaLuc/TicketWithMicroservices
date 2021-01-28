@@ -20,19 +20,17 @@ interface UserDoc extends mongoose.Document{
 const userSchema=new mongoose.Schema({
     email:{
         type: String,
-        required: true
+        required: true,
     },
     password:{
         type: String,
-        required :true
+        required:true,
     }
 })
 
 userSchema.statics.build=(attrs:Userattributs)=>{
-      return new User
+      return new User(attrs)
 }
-const User=mongoose.model<UserDoc ,UserModel>('User',userSchema);
-
-
+const User=mongoose.model<UserDoc,UserModel>('User',userSchema);
 
 export{ User }

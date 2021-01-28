@@ -19,7 +19,7 @@ app.all('*', async function (req, res) {
         throw new NotFoundError();
     })
 
-app.use(errorHandler);
+
 
 const start=async ()=>{
     try{
