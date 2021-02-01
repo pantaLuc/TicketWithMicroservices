@@ -15,6 +15,13 @@ spec:
       containers:
       - name: auth
         image: panta19l/auth
+        env:
+          - name: JWT_KEY
+            valueFrom:
+              secretKeyRef:
+                name: jwt_secret
+                key: JWT_KEY
+            
 ---
 apiVersion: v1
 kind: Service
