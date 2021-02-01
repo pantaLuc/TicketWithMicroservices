@@ -33,8 +33,7 @@ router.post('/api/users/signup',[
   const user=User.build({email ,password})
   //save the user to the data base
   await user.save();
-  // saying a user is created
-  console.log(email)
+  
   res.status(201).send(user);
 
   });
