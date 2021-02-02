@@ -5,6 +5,7 @@ import {RequestValidationError} from '../errors/req-validation-error';
 import 'express-async-errors'
 import { BadRequesError } from '../errors/bad-reques';
 import jwt from 'jsonwebtoken'; 
+import { validateRequest } from '../middleware/valid-request';
 
 const router=express.Router()
 
@@ -17,16 +18,12 @@ router.post('/api/users/signup',[
   .isLength({min:4 , max:20})
   .withMessage("password must be between 4 and 20characters")
 ],
+validateRequest,
  async function (req: Request, res: Response) {
-  
-    const error = validationResult(req);
-    if (!error.isEmpty()) {
-      throw new RequestValidationError(error.array());
-    }
     const {email, password}=req.body 
   // verifier si un utilisateur exist avec cet email
 
-  const existingUser=await User.findOne({email});
+  const existingUser=await User.findOne({email});  
   if(existingUser){
    throw new BadRequesError('email in use');
   }
