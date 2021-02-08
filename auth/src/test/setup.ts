@@ -4,6 +4,7 @@ import {app} from '../app';
 // est un hook qui va s' executer avant tout nos tests
 let mongo:any
 beforeAll(async ()=>{
+    process.env.JWT_KEY='panta'
     mongo= new  MongoMemoryServer() ;//create a mmongomemory server
     const mongoUri=await mongo.getUri();
 
